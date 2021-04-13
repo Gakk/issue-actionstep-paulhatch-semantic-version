@@ -25,6 +25,8 @@ jobs:
     - name: Calculate Version
       id: version
       uses: paulhatch/semantic-version@v3
+      with:
+        format: "${major}.${minor}.${patch}+${increment}"
 
     - name: Create Artifact
       # You may pin to the exact commit or the version.
