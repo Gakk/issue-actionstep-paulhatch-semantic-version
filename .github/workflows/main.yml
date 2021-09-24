@@ -24,6 +24,7 @@ jobs:
       id: version
       uses: paulhatch/semantic-version@v4
       with:
+        short_tags: false
         format: "${major}.${minor}.${patch}+${increment}"
 
     - name: Create Artifact
