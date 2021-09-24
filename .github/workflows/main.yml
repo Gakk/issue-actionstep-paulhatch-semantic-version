@@ -20,11 +20,16 @@ jobs:
         # Fetch all branches and tags to determine semantic version
         fetch-depth: 0
 
+    - name: 'Release: Extract branch name'
+      run: echo "##[set-output name=branch-name;]${GITHUB_REF##*/}"
+      id: extract-branch
+
     - name: Calculate Version
       id: version
       uses: paulhatch/semantic-version@v4
       with:
-        format: "${major}.${minor}.${patch}+${increment}"
+        short_tags: false
+        format: "${major}.${minor}.${patch}-${{ steps.extract-branch.outputs.branch-name }}.${increment}"
 
     - name: Create Artifact
       # You may pin to the exact commit or the version.
@@ -40,6 +45,9 @@ jobs:
         path: '**/*.txt'
         if-no-files-found: error
 
-    - name: Print GitHub event action
-      run: echo "${{ github.event.action }}"
-      
+    - name: Print GitHub
+      run: echo "${{ toJSON(github) }}"
+
+    - name: 'Release Candidate: Print shortcut to create release'
+      if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' }}
+      run: echo "::warning::URL to create..."
