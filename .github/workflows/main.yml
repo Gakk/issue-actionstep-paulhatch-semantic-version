@@ -21,7 +21,6 @@ jobs:
         fetch-depth: 0
 
     - name: 'Release: Extract branch name'
-      if: ${{ startsWith(github.ref, 'refs/tags/') }}
       run: echo "##[set-output name=branch-name;]${GITHUB_REF##*/}"
       id: extract-branch
 
