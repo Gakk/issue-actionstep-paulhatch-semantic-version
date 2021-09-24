@@ -45,6 +45,6 @@ jobs:
       run: echo "${{ toJSON(github) }}"
 
     - name: 'Release Candidate: Print shortcut to create release'
-      if: endsWith(github.ref, "refs/heads/${{github.event.repository.default_branch}}" }}
+      if: github.ref == "refs/heads/${{github.event.repository.default_branch}}" }}
       run: echo "::warning::URL to create...
       
