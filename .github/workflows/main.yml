@@ -25,7 +25,7 @@ jobs:
       uses: paulhatch/semantic-version@v4
       with:
         short_tags: false
-        format: "${major}.${minor}.${patch}+${increment}"
+        format: "${major}.${minor}.${patch}-${GITHUB_REF##*/}.${increment}"
 
     - name: Create Artifact
       # You may pin to the exact commit or the version.
