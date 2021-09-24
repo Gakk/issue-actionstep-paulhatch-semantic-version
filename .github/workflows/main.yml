@@ -48,7 +48,3 @@ jobs:
       
     - name: Print GitHub ref
       run: echo "${{ github.ref }}"
-      
-    - name: Print GitHub
-      run: echo "${{ github }}"
-      
