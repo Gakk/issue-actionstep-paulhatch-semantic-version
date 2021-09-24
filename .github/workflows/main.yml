@@ -43,8 +43,8 @@ jobs:
     - name: Print GitHub event action
       run: echo "${{ github.event.action }}"
       
-    - name: Print GitHub event repository
-      run: echo "${{ github.event.repository }}"
+    - name: Print GitHub event repository default branch name
+      run: echo "${{ github.event.repository.default_branch }}"
       
     - name: Print GitHub ref
       run: echo "${{ github.ref }}"
