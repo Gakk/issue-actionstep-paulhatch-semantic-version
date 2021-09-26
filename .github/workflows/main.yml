@@ -45,9 +45,6 @@ jobs:
         path: '**/*.txt'
         if-no-files-found: error
 
-    - name: Print GitHub
-      run: echo "${{ toJSON(github) }}"
-
     - name: 'Release Candidate: Print shortcut to create release'
       if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main' }}
       run: echo "::warning::URL to create..."
