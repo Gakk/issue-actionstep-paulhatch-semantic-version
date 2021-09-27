@@ -29,7 +29,8 @@ jobs:
       uses: paulhatch/semantic-version@v4.0.2
       with:
         short_tags: false
-        format: "${major}.${minor}.${patch}-${{ steps.extract-branch.outputs.branch-name }}.${increment}"
+        format: "${major}.${minor}.${patch}-${{ github.ref##*/ }}.${increment}"
+        # format: "${major}.${minor}.${patch}-${{ steps.extract-branch.outputs.branch-name }}.${increment}"
 
     - name: Create Artifact
       # You may pin to the exact commit or the version.
